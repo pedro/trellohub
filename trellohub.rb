@@ -59,14 +59,21 @@ class GithubIssue
   end
 
   def parse_project
-    match = item.name.match(/github.com\/(.*)\/(.*)\/issues\/(\d+)/)
+    match = item.name.match(/github.com\/(.*)\/(.*)\/(issues|pull)\/(\d+)/)
     return unless match
-    @github_user, @github_repo, @github_issue = match[1..4]
+    @github_user, @github_repo, @github_type, @github_id = match[1..5]
+  end
+
+  def github_representation
+    if @github_type == "pull"
+      self.class.github.pulls.find(@github_user, @github_repo, @github_id)
+    else
+      self.class.github.issues.find(@github_user, @github_repo, @github_id)
+    end
   end
 
   def closed?
-    issue = self.class.github.issues.find(@github_user, @github_repo, @github_issue)
-    issue.state != "open"
+    github_representation.state != "open"
   end
 end
 
