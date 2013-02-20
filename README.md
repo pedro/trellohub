@@ -2,6 +2,8 @@
 
 A script to sync checklists in Trello with Github issues.
 
+Also, a serious runner for the Lack of Creativity Naming Rubygems Award, together with baconmocha, file-tail and todo.
+
 
 ## Usage
 
