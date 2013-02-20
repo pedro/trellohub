@@ -18,4 +18,4 @@ Sorry, this is not yet a service! For now:
 
   - Push to a Heroku app
   - Fill in config-vars according to `.env.sample`. You'll need a [Github OAuth token](https://help.github.com/articles/creating-an-oauth-token-for-command-line-use) and a [Trello account key](https://trello.com/1/appKey/generate) with write access to private data (change the scope to `read,write`, consider making it long-lived by setting `expiration=never`.)
-  - Configure scheduler to run every minute or so, running `bundle exec ruby trellohub.rb`
+  - Configure scheduler to run every 10 minutes, running `bundle exec ruby trellohub.rb`
