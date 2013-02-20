@@ -75,7 +75,7 @@ board.cards.each do |card|
   github_issues = []
   card.checklists.each do |list|
     github_issues += list.items.map do |item|
-      GithubIssue.new(card, list, item)
+      GithubIssue.from_trello(card, list, item)
     end.compact
   end
 
